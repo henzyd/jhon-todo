@@ -9,7 +9,7 @@ export default {
           "02": "#3556AB",
           "03": "#0D2972",
         },
-        error: "#720D0D",
+        error: "#AB3535",
       },
       boxShadow: {
         btn: "0px 4px 4px 0px #00000040",
