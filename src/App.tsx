@@ -18,10 +18,10 @@ function App() {
   return (
     <>
       <main className="bg-[#F3F3F3] w-full h-screen">
-        <div className="w-full h-screen grid grid-cols-[0.6fr,1fr] max-w-[1000px] mx-auto">
-          <aside className="flex flex-col h-screen shadow-sidebar relative">
+        <div className="w-full h-screen grid grid-cols-[0.6fr,1fr] tabletAndBelow:grid-cols-[0.9fr,1fr] tablet:!grid-cols-1 max-w-[1000px] mx-auto">
+          <aside className="flex flex-col h-screen shadow-sidebar relative tablet:trab">
             <div className="bg-primary-02 h-[100px] flex items-center">
-              <div className="flex gap-4 p-8">
+              <div className="flex gap-4 p-8 tablet:px-4">
                 <MuiAvatar>
                   <img
                     src={Avatar}
@@ -41,12 +41,16 @@ function App() {
             </div>
             <div className="border-2 border-[#9EB031] bg-[#CDE53D] flex gap-8 justify-between">
               <div className="flex items-center gap-3 p-5 py-7 pr-0">
-                <img src={Trophy} alt="trophy-icon" className="w-12" />
-                <p className="text-primary-01 font-bold text-shadow-white">
+                <img
+                  src={Trophy}
+                  alt="trophy-icon"
+                  className="w-12 tablet:w-8"
+                />
+                <p className="text-primary-01 font-bold text-base text-shadow-white tablet:text-sm">
                   Go Pro Upgrade Now
                 </p>
               </div>
-              <div className="bg-primary-01 self-start flex items-center justify-center p-5 px-6 mr-6 z-50 top-[-2px] relative">
+              <div className="bg-primary-01 self-start flex items-center justify-center p-5 px-6 tablet:p-4 tablet:text-sm mr-6 z-50 top-[-2px] relative">
                 <span className="text-[#f2c94c]">$1</span>
               </div>
             </div>
