@@ -8,6 +8,9 @@ const theme = createTheme({
     error: {
       main: "#720D0D",
     },
+    secondary: {
+      main: "#49C25D",
+    },
   },
   components: {
     MuiCheckbox: {
