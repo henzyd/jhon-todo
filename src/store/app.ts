@@ -8,6 +8,7 @@ type State = {
 type Action = {
   editTask: (task: State["taskList"][0]) => void;
   addTaskToList: (task: State["taskList"][0]) => void;
+  deleteTask: (id: string) => void;
 };
 
 const useAppStore = create<State & Action>()(
@@ -50,8 +51,19 @@ const useAppStore = create<State & Action>()(
         }),
       addTaskToList: (task) =>
         set(({ taskList }) => ({
-          taskList: [...taskList, task],
+          taskList: [task, ...taskList],
         })),
+
+      deleteTask: (id) =>
+        set(({ taskList }) => {
+          const taskIndex = taskList.findIndex((item) => item.id === id);
+
+          if (taskIndex !== -1) {
+            taskList.splice(taskIndex, 1);
+          }
+
+          return { taskList };
+        }),
     }),
     {
       name: "tasks",

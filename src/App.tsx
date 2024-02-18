@@ -11,7 +11,7 @@ import Input from "./components/input";
 import useAppStore from "./store/app";
 
 function App() {
-  const { taskList, addTaskToList, editTask } = useAppStore();
+  const { taskList, addTaskToList, editTask, deleteTask } = useAppStore();
 
   const [newTask, setNewTask] = useState("");
   const [edittingTask, setEdittingTask] = useState<Task | null>(null);
@@ -22,7 +22,7 @@ function App() {
         <div className="w-full h-screen grid grid-cols-[0.6fr,1fr] max-w-[1000px] mx-auto">
           <aside className="flex flex-col h-screen shadow-sidebar relative">
             <div className="bg-primary-02 h-[100px] flex items-center">
-              <div className="flex gap-4 p-8 py-8">
+              <div className="flex gap-4 p-8">
                 <MuiAvatar>
                   <img
                     src={Avatar}
@@ -47,7 +47,7 @@ function App() {
                 <span className="text-[#f2c94c]">$1</span>
               </div>
             </div>
-            <div className="flex flex-col gap-4 p-4 flex-grow overflow-y-auto">
+            <div className="flex flex-col gap-4 p-4 h-full overflow-y-auto">
               {taskList.map((item, index) => (
                 <Task
                   taskClickHandler={(obj: {
@@ -62,8 +62,14 @@ function App() {
                 />
               ))}
             </div>
-            <Button className="absolute bottom-[0px] left-[280px] w-fit !rounded-full !p-6">
-              <FaPlus className="text-xl" />
+            <Button
+              className="!absolute bottom-[25px] right-[25px] w-fit !rounded-full !p-3"
+              size="small"
+              onClick={() => {
+                setEdittingTask(null);
+              }}
+            >
+              <FaPlus className="text-base" />
             </Button>
           </aside>
           <main className="h-screen flex flex-col">
@@ -87,10 +93,18 @@ function App() {
                         text: value,
                       });
                     }}
+                    maxRows={8}
                   />
                 </div>
                 <div className="flex gap-4 h-10">
-                  <Button className="!px-8" color="error">
+                  <Button
+                    className="!px-8"
+                    color="error"
+                    onClick={() => {
+                      deleteTask(edittingTask.id);
+                      setEdittingTask(null);
+                    }}
+                  >
                     Delete
                   </Button>
                   <Button
@@ -115,6 +129,7 @@ function App() {
                       setNewTask(value);
                     }}
                     multiline
+                    maxRows={8}
                     label="Task Name"
                   />
                 </div>
@@ -128,9 +143,10 @@ function App() {
                         text: newTask,
                         done: false,
                       });
+                      setNewTask("");
                     }}
                   >
-                    Save
+                    Add
                   </Button>
                 </div>
               </div>

@@ -12,7 +12,7 @@ export default function Button({
     <LoadingButton
       variant={variant}
       className={twMerge(
-        `!normal-case !shadow-inner`,
+        `!normal-case !shadow-inner !min-w-0`,
         loading && `opacity-40 !cursor-not-allowed !shadow-none`,
         `${className}`
       )}

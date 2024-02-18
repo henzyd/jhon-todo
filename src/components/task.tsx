@@ -1,26 +1,20 @@
 import { Checkbox } from "@mui/material";
 import { FaCheck } from "react-icons/fa6";
-import { v4 as uuidv4 } from "uuid";
 import Button from "./button";
+import useAppStore from "~/store/app";
 
 type TaskProps = {
+  id: string;
   text: string;
   done: boolean;
   taskClickHandler: (obj: { id: string; text: string; done: boolean }) => void;
 };
 
-export default function Task({ text, done, taskClickHandler }: TaskProps) {
+export default function Task({ id, text, done, taskClickHandler }: TaskProps) {
+  const { editTask } = useAppStore();
+
   return (
-    <button
-      className="bg-white border-[#E7E7E7] shadow-taskCard rounded-md flex items-center justify-between p-4 gap-4"
-      onClick={() => {
-        taskClickHandler({
-          id: uuidv4(),
-          text,
-          done,
-        });
-      }}
-    >
+    <div className="bg-white border-[#E7E7E7] shadow-taskCard rounded-md flex items-center justify-between p-4 gap-4">
       <div className="flex items-center gap-2">
         <Checkbox
           checked={done}
@@ -31,13 +25,31 @@ export default function Task({ text, done, taskClickHandler }: TaskProps) {
               border: "2px solid #49C25D",
             },
           }}
+          onChange={(e) => {
+            editTask({
+              id,
+              text,
+              done: e.target.checked,
+            });
+          }}
           size="small"
         />
         <p className={`text-primary-01 text-sm ${done && "text-[#8D8D8D]"}`}>
           {text}
         </p>
       </div>
-      <Button variant="outlined">Edit</Button>
-    </button>
+      <Button
+        variant="outlined"
+        onClick={() => {
+          taskClickHandler({
+            id,
+            text,
+            done,
+          });
+        }}
+      >
+        Edit
+      </Button>
+    </div>
   );
 }
