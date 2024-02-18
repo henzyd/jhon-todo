@@ -38,7 +38,7 @@ export default function Input({
       )}
       <OutlinedInput
         className={twMerge(
-          "w-full !rounded-md !bg-white text-primary-03",
+          "w-full !rounded-md !bg-white !text-primary-03 !p-1 !px-2",
           className
         )}
         {...props}
@@ -50,7 +50,6 @@ export default function Input({
           //   borderColor: "pink !important",
           // },
           "& .MuiOutlinedInput-input": {
-            padding: "11px 13.5px",
             borderColor: `${props.readOnly ? "transparent" : "#0071B9"}`,
             "&:hover": {
               borderColor: "pink",

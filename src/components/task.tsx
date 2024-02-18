@@ -37,6 +37,7 @@ export default function Task({ id, text, done, taskClickHandler }: TaskProps) {
         </p>
       </div>
       <Button
+        className="!text-sm !py-3 !px-[0.65rem]"
         variant="outlined"
         onClick={() => {
           taskClickHandler({

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Avatar as MuiAvatar } from "@mui/material";
-import { FaPlus } from "react-icons/fa6";
 import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 import Button from "./components/button";
@@ -67,17 +66,17 @@ function App() {
               ))}
             </div>
             <Button
-              className="!absolute bottom-[25px] right-[25px] w-fit !rounded-full !p-3"
+              className="!absolute bottom-[25px] right-[25px] w-fit !rounded-full !p-4"
               size="small"
               onClick={() => {
                 setEdittingTask(null);
               }}
             >
-              <FaPlus className="text-base" />
+              <span className="text-xl leading-3">+</span>
             </Button>
           </aside>
           <main className="h-screen flex flex-col">
-            <div className="bg-primary-02 shadow-header flex justify-center h-[100px] items-center">
+            <div className="bg-primary-02 shadow-header flex justify-center h-[124px] items-center">
               <span className="text-xl text-white font-medium text-shadow">
                 {edittingTask ? "Edit Task" : "Add Task"}
               </span>
