@@ -12,7 +12,7 @@ export default function Button({
     <LoadingButton
       variant={variant}
       className={twMerge(
-        `!normal-case !shadow-inner`,
+        `!normal-case !shadow-inner !min-w-0`,
         loading && `opacity-40 !cursor-not-allowed !shadow-none`,
         `${className}`
       )}
@@ -21,6 +21,9 @@ export default function Button({
         "&.MuiButton-outlinedPrimary": {
           color: "#0e82bb !important",
           borderColor: "#0e82bb !important",
+        },
+        "&.MuiButton-contained": {
+          textShadow: "0px 2px 0px #000000",
         },
         ...sx,
       }}

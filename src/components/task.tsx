@@ -1,35 +1,34 @@
 import { Checkbox } from "@mui/material";
-import { FaCheck } from "react-icons/fa6";
-import { v4 as uuidv4 } from "uuid";
 import Button from "./button";
+import useAppStore from "~/store/app";
+import Checked from "~/assets/icons/checked.svg";
+import Unchecked from "~/assets/icons/unchecked.svg";
 
 type TaskProps = {
+  id: string;
   text: string;
   done: boolean;
   taskClickHandler: (obj: { id: string; text: string; done: boolean }) => void;
 };
 
-export default function Task({ text, done, taskClickHandler }: TaskProps) {
+export default function Task({ id, text, done, taskClickHandler }: TaskProps) {
+  const { editTask } = useAppStore();
+
   return (
-    <button
-      className="bg-white border-[#E7E7E7] shadow-taskCard rounded-md flex items-center justify-between p-4 gap-4"
-      onClick={() => {
-        taskClickHandler({
-          id: uuidv4(),
-          text,
-          done,
-        });
-      }}
-    >
+    <div className="bg-white border-[#E7E7E7] shadow-taskCard rounded-md flex items-center justify-between p-4 gap-4">
       <div className="flex items-center gap-2">
         <Checkbox
+          className="w-11"
           checked={done}
           color="secondary"
-          checkedIcon={<FaCheck />}
-          sx={{
-            "& .Mui-checked": {
-              border: "2px solid #49C25D",
-            },
+          icon={<img src={Unchecked} alt="unchecked icon" />}
+          checkedIcon={<img src={Checked} alt="checked icon" />}
+          onChange={(e) => {
+            editTask({
+              id,
+              text,
+              done: e.target.checked,
+            });
           }}
           size="small"
         />
@@ -37,7 +36,18 @@ export default function Task({ text, done, taskClickHandler }: TaskProps) {
           {text}
         </p>
       </div>
-      <Button variant="outlined">Edit</Button>
-    </button>
+      <Button
+        variant="outlined"
+        onClick={() => {
+          taskClickHandler({
+            id,
+            text,
+            done,
+          });
+        }}
+      >
+        Edit
+      </Button>
+    </div>
   );
 }
