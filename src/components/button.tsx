@@ -22,6 +22,9 @@ export default function Button({
           color: "#0e82bb !important",
           borderColor: "#0e82bb !important",
         },
+        "&.MuiButton-contained": {
+          textShadow: "0px 2px 0px #000000",
+        },
         ...sx,
       }}
       loading={loading}
