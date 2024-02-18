@@ -39,14 +39,14 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="border-2 border-[#9EB031] bg-[#CDE53D] flex gap-8 justify-between relative">
+            <div className="border-2 border-[#9EB031] bg-[#CDE53D] flex gap-8 justify-between">
               <div className="flex items-center gap-3 p-5 py-7 pr-0">
                 <img src={Trophy} alt="trophy-icon" className="w-12" />
                 <p className="text-primary-01 font-bold text-shadow-white">
                   Go Pro Upgrade Now
                 </p>
               </div>
-              <div className="bg-primary-01 self-start flex items-center justify-center p-5 px-6 mr-6">
+              <div className="bg-primary-01 self-start flex items-center justify-center p-5 px-6 mr-6 z-50 top-[-2px] relative">
                 <span className="text-[#f2c94c]">$1</span>
               </div>
             </div>
