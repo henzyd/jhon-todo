@@ -32,7 +32,11 @@ export default function Task({ id, text, done, taskClickHandler }: TaskProps) {
           }}
           size="small"
         />
-        <p className={`text-primary-01 text-sm ${done && "text-[#8D8D8D]"}`}>
+        <p
+          className={`text-primary-01 text-sm ${
+            done && "!text-[#8D8D8D] line-through"
+          }`}
+        >
           {text}
         </p>
       </div>
